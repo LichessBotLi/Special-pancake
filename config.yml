@@ -27,7 +27,7 @@ engines:
 
 syzygy:
   standard:
-    enabled: true                        # Activate local syzygy endgame tablebases.
+    enabled: false                        # Activate local syzygy endgame tablebases.
     paths:                                # Paths to local syzygy endgame tablebases.
       - "/path/to/standard/syzygy"
     max_pieces: 7                         # Count of max pieces in the local syzygy endgame tablebases.
@@ -55,20 +55,28 @@ opening_books:
   enabled: true                          # Activate opening books.
   priority: 1000                           # Priority with which this move source is used. Higher priority is used first.
   books:
-#   bullet:
-#     selection: best_move         # Move selection is one of "weighted_random", "uniform_random" or "best_move".
-#     names:                              # List of names of books to use in bullet.
-#       - BulletBook
-#       - DefaultBook
-#   standard_black:
-#     selection: best_move                # Move selection is one of "weighted_random", "uniform_random" or "best_move".
-#     names:                              # List of names of books to use as black.
-#       - BlackBook
+   bullet_white:
+     selection: best_move         # Move selection is one of "weighted_random", "uniform_random" or "best_move".
+     names:                              # List of names of books to use in bullet.
+       - "Titans"
+  bullet_black:
+     selection: best_move         # Move selection is one of "weighted_random", "uniform_random" or "best_move".
+     names:                              # List of names of books to use in bullet.
+       - "komodo"
+    standard_white:
+     selection: best_move                # Move selection is one of "weighted_random", "uniform_random" or "best_move".
+     names:                              # List of names of books to use as black.
+       - "Titans"
+
+    standard_black:
+     selection: best_move                # Move selection is one of "weighted_random", "uniform_random" or "best_move".
+     names:                              # List of names of books to use as black.
+       - "komodo"
     standard:
       selection: best_move          # Move selection is one of "weighted_random", "uniform_random" or "best_move".
       max_depth: 16                       # Half move max depth. (Comment this line for max depth)
       names:                              # List of names of books to use if there is no specific book for the time control, white, black or chess960.
-        - DefaultBook
+        - "Titans"
 #   Use the same pattern for 'bullet', 'blitz', 'rapid', 'classical',
 #   'antichess', 'atomic', 'chess960', 'crazyhouse', 'horde', 'kingofthehill', 'racingkings' and '3check' as well.
 #   Append '_white' or '_black' to use the books only as the specific color.
@@ -123,7 +131,7 @@ resign:
   against_humans: true                    # Activate whether these settings should apply against humans.
 
 challenge:                                # Incoming challenges. (Commenting allowed)
-  concurrency: 1                          # Number of games to play simultaneously.
+  concurrency: 2                          # Number of games to play simultaneously.
   bullet_with_increment_only: false       # Whether bullet games against BOTs should only be accepted with increment.
 # min_increment: 0                        # Minimum amount of increment to accept a challenge.
 # max_increment: 180                      # Maximum amount of increment to accept a challenge.
@@ -180,7 +188,7 @@ messages:
   #   {cpu} to insert CPU information
   #   {ram} to insert RAM size
   # Any other words in curly braces will be removed.
-  greeting: "Hey, I'm running {engine}. Good luck! Type !help for a list of commands." # Message sent to the opponent at the beginning of a game.
+  greeting: "Hello, I'm running {engine}. Good luck! Type !help for a list of commands." # Message sent to the opponent at the beginning of a game.
   goodbye: "Good game, see you next time."                                             # Message sent to the opponent after the end of a game.
   greeting_spectators: "Hey, I'm running {engine}. Type !help for a list of commands." # Message sent to the spectators at the beginning of a game.
   goodbye_spectators: "Thanks for watching."                                           # Message sent to the spectators after the end of a game.
@@ -194,4 +202,5 @@ messages:
 #   - Username2
 
 books:                                    # Names of the opening books (to be used above in the opening_books section) and paths to the opening books.
-  DefaultBook: "/path/to/DefaultBook.bin"
+  komodo: "/engines/komodo.bin"
+  Titans: "/engines/Titans.bin"
